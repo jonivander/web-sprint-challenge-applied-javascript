@@ -25,11 +25,25 @@ axios
     .get('https://lambda-times-backend.herokuapp.com/articles')
     .then(response => {
        response.data.articles.javascript.forEach(element =>{
-            cardMaker(element)
+            (cardMaker(element))
             console.log(element)
         })
-      
-
+        response.data.articles.bootstrap.forEach(element =>{
+            (cardMaker(element))
+            console.log(element)
+        })
+        response.data.articles.technology.forEach(element =>{
+            (cardMaker(element))
+            console.log(element)
+        })
+        response.data.articles.jquery.forEach(element =>{
+            (cardMaker(element))
+            console.log(element)
+        })
+        response.data.articles.node.forEach(element =>{
+            (cardMaker(element))
+            console.log(element)
+        })
     })
     .catch(error => {
         console.log(error)
@@ -49,25 +63,27 @@ function cardMaker(article){
     author.className = 'author'
     imgContainer.className = 'img-container'
 
-    headlineDiv.textContent = article.headline
-    image.src = article.authorPhoto
+    headlineDiv.textContent = `${article.headline}`
+    image.src = `${article.authorPhoto}`
     writtenBy.textContent = `By ${article.authorName}`
 
-    card.appendChild(headlineDiv)
-    card.appendChild(author)
-    author.appendChild(imgContainer)
-    imgContainer.appendChild(image)
-    author.appendChild(writtenBy)
+    card.append(headlineDiv)
+    card.append(author)
+    author.append(imgContainer)
+    imgContainer.append(image)
+    author.append(writtenBy)
+    cardContainer.append(card)
+
+    
 
     card.addEventListener('click', ()=>{
         console.log(article.headline)
     })
 
 
-
     console.log(card)
-return card
+return cardContainer
 }
 
-const cards = document.querySelector('.cards-container')
-cards.appendChild(cardMaker())
+const cardContainer = document.querySelector('.cards-container')
+// cards.appendChild(cardMaker())
