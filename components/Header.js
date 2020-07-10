@@ -28,7 +28,7 @@ function Header(item) {
     header.appendChild(date)
     header.appendChild(title)
     header.appendChild(temp)
-
+console.log(header)
 return header
 }
 
