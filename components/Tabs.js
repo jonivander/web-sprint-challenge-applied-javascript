@@ -9,3 +9,16 @@
 //    <div class="tab">topic here</div>
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
+
+axios
+    .get('https://lambda-times-backend.herokuapp.com/topics')
+    .then(result => {
+        for(let obj in result.data){
+            result.data[obj].forEach(item => {
+                container.append(cardMaker(item))
+            })
+        }
+    })
+    .catch(error => {
+        console.log(error)
+    })
