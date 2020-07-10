@@ -13,12 +13,20 @@
 axios
     .get('https://lambda-times-backend.herokuapp.com/topics')
     .then(result => {
-        for(let obj in result.data){
-            result.data[obj].forEach(item => {
-                container.append(cardMaker(item))
-            })
+        const tabCategory = result.data.topics
+        const tabItem = document.querySelector('.topics')
+        tabItem.appendChild(tabs(tabCategory))
         }
-    })
+        // console.log(result.data)
+    )
     .catch(error => {
         console.log(error)
     })
+
+function tabs(item){
+    const tab = document.createElement('div')
+    tab.className = 'tab'
+    tab.textContent = ` ${item} `
+
+    return tab
+}
